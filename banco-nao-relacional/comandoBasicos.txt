@@ -1,0 +1,99 @@
+// Saber a versão do mongo
+
+mongo -version
+
+// saber mais sobre os comando
+help 
+
+// saber mais sobre o db
+db. (tab duas vezes)
+
+Optimizing tool selection...Aqui estão alguns comandos básicos do MongoDB para você começar:
+
+1. Iniciar o shell do MongoDB:
+```
+mongo
+```
+
+2. Mostrar bancos de dados:
+```
+show dbs
+```
+
+3. Selecionar/criar um banco de dados:
+```
+use nomeDoBanco
+```
+
+4. Mostrar coleções (tabelas):
+```
+show collections
+```
+
+5. Inserir um documento:
+```
+db.nomeDaColecao.insertOne({ campo1: "valor1", campo2: "valor2" })
+```
+
+6. Buscar documentos:
+```
+db.nomeDaColecao.find()
+
+db.nomeDaColecao.find().pretty() // modela no formato json
+```
+
+7. Buscar com filtro:
+```
+db.nomeDaColecao.find({ campo: "valor" })
+```
+
+8. Atualizar um documento:
+```
+db.nomeDaColecao.updateOne({ campo: "valor" }, { $set: { campo2: "novoValor" } })
+```
+
+9. Remover um documento:
+```
+db.nomeDaColecao.deleteOne({ campo: "valor" })
+```
+
+10. Apagar uma coleção:
+```
+db.nomeDaColecao.drop()
+```
+
+11. Apagar um banco de dados:
+```
+db.dropDatabase()
+```
+
+Se quiser exemplos mais avançados ou comandos específicos, é só pedir!
+
+Estado
+	nome = São Paulo, sigla = SP, regiao = Sudeste
+	Cidades
+		nome: Campinas, area = 795.7, prefeito = Jonas Donizette, populacao = 1081000
+		nome: Guarulhos, populacao = 1325000
+		nome: Sorocada, distanciaCapital = 87, populacao = 644919
+
+	Cada cidade tem o atributo _id <- ObjectId
+	
+	var meuId = ObjectId();
+	db.createCollection('Estados')
+
+	db.estados.insert({ 
+		nome:"São Paulo", 
+		sigla:"SP", 
+		regiao:"Sudeste", 
+		cidades: [ 
+					{  
+						_id:ObjectId(), nome:"Campinas", area:795.7, prefeito : "Jonas Donizette", populacao: 1081000 
+					}, 
+					{ 
+						_id:ObjectId(), nome: "Guarulhos", populacao: 1325000 
+					}, 
+					{ 
+						_id:ObjectId(), nome: "Sorocada", distanciaCapital: 87, populacao : 644919 
+					}
+				] 
+			 })

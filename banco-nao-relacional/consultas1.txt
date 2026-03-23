@@ -1,0 +1,46 @@
+ // Cidades dentro do 2 Laço Cidades
+ db.Estados.find({sigla:"SP"},{"Cidades.nome":1, _id:0})
+	// apresenta:
+ 	{ "Cidades" : [ { "nome" : "Campinas" }, { "nome" : "Guarulhos" }, { "nome" : "Sorocada" } ] }
+	{ "Cidades" : [ { "nome" : "Campinas" }, { "nome" : "Guarulhos" }, { "nome" : "Sorocada" } ] } 
+
+// Cidades dentro do 1 laço
+db.Estados.find({sigla:"SP"},{nome:1, sigla:1, _id:0})
+{ "nome" : "São Paulo", "sigla" : "SP" }
+{ "nome" : "São Paulo", "sigla" : "SP" }
+
+// contar registros
+ db.estados.count()
+	3
+
+//  Paginando dados
+db.estados.find().skip(1).limit(2)
+{ "_id" : ObjectId("69c02af215643e5c2f7f3ce6"), "nome" : "Alagoas", "sigla" : "AL", "regiao" : "Nordeste", "populacao" : 3322000 }
+{ "_id" : ObjectId("69c02c3315643e5c2f7f3ce7"), "nome" : "Rio de Janeiro", "sigla" : "RJ", "regiao" : "Sudeste", "cidades" : [ { "nome" : "Niteroi", "area" : 133.9, "populacao" : 487562 } ] }
+
+// Or
+db.estados.find( {$or: [{ sigla:"RJ"}, { sigla:"AC"}] }).pretty()
+{
+        "_id" : ObjectId("69c02a8615643e5c2f7f3ce5"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("69c02c3315643e5c2f7f3ce7"),
+        "nome" : "Rio de Janeiro",
+        "sigla" : "RJ",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Niteroi",
+                        "area" : 133.9,
+                        "populacao" : 487562
+                }
+        ]
+}
+
+//Aggregation Pipeline Stages
+
+fonte:
+https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/
